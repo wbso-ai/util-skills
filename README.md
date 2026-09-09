@@ -1,7 +1,8 @@
 # Utility skills
 
-A collection of public, reusable Codex skills for general-purpose workflows. Every skill is
-self-contained under `skills/<skill-name>` and can be installed independently.
+A collection of public, reusable Agent Skills for general-purpose workflows. The skills use the
+open `SKILL.md` format and can be used by both Codex and Claude Code. Every skill is self-contained
+under `skills/<skill-name>` and can be installed independently.
 
 ## Available skills
 
@@ -10,13 +11,32 @@ self-contained under `skills/<skill-name>` and can be installed independently.
 Safely inspect and operate the OpenAI Ads Advertiser API. Covers ad accounts, creative uploads,
 campaigns, ad groups, ads, conversion settings, previews, and insights.
 
-Install by asking Codex:
+#### Install in Codex
+
+Ask Codex:
 
 ```text
 Use $skill-installer to install https://github.com/wbso-ai/util-skills/tree/main/skills/openai-ads-api
 ```
 
 The skill becomes available as `$openai-ads-api` on the next turn.
+
+#### Install in Claude Code
+
+Clone the collection once and symlink the skill into your personal Claude skills directory:
+
+```bash
+git clone --depth 1 https://github.com/wbso-ai/util-skills.git ~/.claude/util-skills
+mkdir -p ~/.claude/skills
+ln -s ~/.claude/util-skills/skills/openai-ads-api ~/.claude/skills/openai-ads-api
+```
+
+Claude can then load the skill automatically or invoke it directly with `/openai-ads-api`. Update
+the collection later with:
+
+```bash
+git -C ~/.claude/util-skills pull --ff-only
+```
 
 ## Repository structure
 
@@ -33,7 +53,9 @@ skills/
 Each new skill belongs in its own hyphen-case directory and must include a valid `SKILL.md`.
 Supporting scripts, references, assets, and agent metadata should live inside that skill directory.
 Skills in this repository must remain generally reusable and must not depend on private
-company-specific repositories, terminology, credentials, or infrastructure.
+company-specific repositories, terminology, credentials, or infrastructure. Tool-specific
+metadata may be included in optional subdirectories, but the core `SKILL.md` and its referenced
+resources must remain portable.
 
 ## Credentials
 
