@@ -1,35 +1,49 @@
-# OpenAI Ads API skill
+# Utility skills
 
-A Codex skill for safely inspecting and operating the OpenAI Ads Advertiser API. It covers ad
-accounts, creative uploads, campaigns, ad groups, ads, conversion settings, previews, and insights.
+A collection of public, reusable Codex skills for general-purpose workflows. Every skill is
+self-contained under `skills/<skill-name>` and can be installed independently.
 
-The skill keeps live mutations explicit, defaults new delivery objects to paused, displays budgets
-in account currency and micros, and never prints or commits API keys.
+## Available skills
 
-## Install with Codex
+### `openai-ads-api`
 
-Ask Codex:
+Safely inspect and operate the OpenAI Ads Advertiser API. Covers ad accounts, creative uploads,
+campaigns, ad groups, ads, conversion settings, previews, and insights.
+
+Install by asking Codex:
 
 ```text
-Use $skill-installer to install https://github.com/wbso-ai/openai-ads-api-skill/tree/main/openai-ads-api
+Use $skill-installer to install https://github.com/wbso-ai/util-skills/tree/main/skills/openai-ads-api
 ```
 
 The skill becomes available as `$openai-ads-api` on the next turn.
 
-## Credential
+## Repository structure
 
-The skill first checks `OPENAI_ADS_API_KEY`, then `~/.config/openai-ads/token`. To store the key
-from the macOS clipboard without putting it in shell history:
-
-```zsh
-mkdir -p ~/.config/openai-ads && chmod 700 ~/.config/openai-ads && pbpaste | tr -d '\r\n' > ~/.config/openai-ads/token && chmod 600 ~/.config/openai-ads/token
+```text
+skills/
+└── openai-ads-api/
+    ├── SKILL.md
+    ├── agents/
+    │   └── openai.yaml
+    └── references/
+        └── api.md
 ```
 
-Create an Ads API key in [OpenAI Ads Manager](https://ads.openai.com). Each key is scoped to one ad
-account.
+Each new skill belongs in its own hyphen-case directory and must include a valid `SKILL.md`.
+Supporting scripts, references, assets, and agent metadata should live inside that skill directory.
+Skills in this repository must remain generally reusable and must not depend on private
+company-specific repositories, terminology, credentials, or infrastructure.
+
+## Credentials
+
+Skills must never commit, print, or document real secret values. The `openai-ads-api` skill first
+checks `OPENAI_ADS_API_KEY`, then `~/.config/openai-ads/token`. Its documentation includes a safe
+local setup command.
 
 ## Sources
 
-The skill verifies operations against the current [OpenAI Ads documentation](https://developers.openai.com/ads/api-quickstart)
-before use. Its bundled API reference is intentionally compact and should not replace the live
-documentation.
+API-oriented skills verify operations against the relevant current vendor documentation before
+use. The `openai-ads-api` skill uses the official
+[OpenAI Ads documentation](https://developers.openai.com/ads/api-quickstart) as its source of
+truth.
