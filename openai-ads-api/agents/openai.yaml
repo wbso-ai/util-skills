@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAI Ads API"
+  short_description: "Beheer OpenAI Ads-campagnes via de API"
+  default_prompt: "Use $openai-ads-api to inspect my OpenAI Ads account and prepare a paused campaign."
