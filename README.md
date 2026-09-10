@@ -1,36 +1,32 @@
 # openai-ads-api skill
 
+![Let an agent run your ads, not your budget](assets/social.png)
+
 An Agent Skill for the OpenAI Ads Advertiser API: ad accounts, creative uploads, campaigns,
 ad groups, ads, conversion settings, previews, and insights. Uses the open `SKILL.md` format,
 so it works in both Codex and Claude Code.
 
 This repository contains exactly one skill; `SKILL.md` is at the root.
 
-## Install in Codex
+## Install
 
-Ask Codex:
-
-```text
-Use $skill-installer to install https://github.com/wbso-ai/openai-ads-api-skill
-```
-
-The skill becomes available as `$openai-ads-api` on the next turn.
-
-## Install in Claude Code
-
-Clone the repository and symlink it into your personal Claude skills directory:
+With the [skills CLI](https://skills.sh), which installs into Claude Code, Codex, Cursor,
+OpenCode and other agents:
 
 ```bash
-git clone --depth 1 https://github.com/wbso-ai/openai-ads-api-skill.git ~/.claude/openai-ads-api-skill
-mkdir -p ~/.claude/skills
-ln -s ~/.claude/openai-ads-api-skill ~/.claude/skills/openai-ads-api
+npx skills add wbso-ai/openai-ads-api-skill
 ```
 
-Claude then loads the skill automatically or on `/openai-ads-api`. Update later with:
+Add `-a claude-code` or `-a codex` to target one agent. Update later with `npx skills update`.
+
+Without the CLI, clone the repository into your agent's skills folder under the skill's own name:
 
 ```bash
-git -C ~/.claude/openai-ads-api-skill pull --ff-only
+git clone https://github.com/wbso-ai/openai-ads-api-skill ~/.claude/skills/openai-ads-api   # Claude Code
+git clone https://github.com/wbso-ai/openai-ads-api-skill ~/.agents/skills/openai-ads-api   # Codex and the ~/.agents convention
 ```
+
+Claude then loads the skill on its own, or on `/openai-ads-api`.
 
 ## Structure
 
@@ -38,6 +34,14 @@ git -C ~/.claude/openai-ads-api-skill pull --ff-only
 SKILL.md
 agents/openai.yaml
 references/api.md
+assets/social.html   # source of the banner above
+assets/social.png    # rendered with headless Chromium, also the GitHub social preview
+```
+
+The banner is plain HTML rendered at 1280x640:
+
+```bash
+chromium --headless=new --window-size=1280,640 --screenshot=assets/social.png assets/social.html
 ```
 
 ## Credentials
