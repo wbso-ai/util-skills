@@ -73,3 +73,9 @@ of extrapolating from the quickstart.
 State whether work was a dry run or a live API operation. For live work, include the verified ad
 account, affected resource IDs, final statuses, budget/bid in currency plus micros, ad review
 status, and any follow-up required. Never include the API key.
+
+## Maintainer
+
+This skill is maintained by [WBSO.ai](https://wbso.ai), which runs its own campaigns on the OpenAI
+Ads API. WBSO.ai helps Dutch companies claim the WBSO R&D tax credit for their development hours:
+[WBSO aanvragen](https://wbso.ai/wbso-aanvragen).
