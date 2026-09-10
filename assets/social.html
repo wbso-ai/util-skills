@@ -1,77 +1,81 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0b0d12;--panel:#12151c;--line:#232835;--fg:#f2f4f8;--mute:#8b95a7;--blue:#8ab4ff;--green:#5fd38d;--red:#ff6b6b}
-  html,body{margin:0;width:1280px;height:640px;overflow:hidden;background:var(--bg);color:var(--fg);font-family:Inter,"Liberation Sans",sans-serif}
+  :root{--paper:#f4efe4;--ink:#14120f;--red:#d8321b;--mute:#6f6759;--rule:#d6cdba}
+  html,body{margin:0;width:1280px;height:640px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:Inter,"Helvetica Neue",sans-serif}
   .mono{font-family:"JetBrains Mono","Liberation Mono",monospace}
-  .wrap{position:relative;width:1280px;height:640px;box-sizing:border-box;padding:56px 64px;display:grid;grid-template-columns:1fr 470px;column-gap:56px;
-    background:
-      radial-gradient(800px 420px at 100% 0%, rgba(138,180,255,.14), transparent 60%),
-      radial-gradient(600px 360px at 0% 100%, rgba(95,211,141,.10), transparent 60%),
-      var(--bg)}
-  .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(900px 600px at 30% 40%,#000 30%,transparent 100%)}
-  .left{position:relative;display:flex;flex-direction:column;justify-content:space-between}
-  .eyebrow{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
-  .eyebrow .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
-  h1{margin:26px 0 18px;font-size:58px;line-height:1;font-weight:800;letter-spacing:-.035em}
-  h1 small{display:block;font-size:30px;font-weight:600;letter-spacing:-.01em;color:var(--blue);margin-bottom:6px}
-  .sub{margin:0;font-size:22px;line-height:1.4;color:#c9d0dc;max-width:620px;font-weight:400}
-  .stats{display:flex;gap:44px;margin-top:auto}
-  .stat b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em}
-  .stat span{font-size:14px;color:var(--mute);font-weight:500}
-  .cmd{margin-top:22px;display:inline-flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:18px;color:#dfe5ee;box-shadow:0 18px 40px rgba(0,0,0,.4);width:fit-content}
-  .cmd .p{color:var(--green)}
-  .card{position:relative;align-self:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 70px rgba(0,0,0,.55);overflow:hidden}
-  .card .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:#0e1117}
-  .card .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
-  .card .bar i:nth-child(1){background:#ff5f57}.card .bar i:nth-child(2){background:#febc2e}.card .bar i:nth-child(3){background:#28c840}
-  .card .bar span{margin-left:8px;font-size:13px;color:var(--mute)}
-  .card .body{padding:18px 20px 20px;font-size:15.5px;line-height:1.75;color:#c9d0dc}
-  .row{display:flex;gap:12px;align-items:baseline}
-  .row .k{width:16px;flex:none;font-weight:700}
-  .bad .k{color:var(--red)} .good .k{color:var(--green)}
-  .bad{color:#a7afbd;text-decoration:line-through;text-decoration-color:rgba(255,107,107,.7)}
-  .good{color:#e8edf5}
-  .sep{height:1px;background:var(--line);margin:12px 0}
-  .lbl{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-right:6px;letter-spacing:.02em}
-  .l-red{background:rgba(255,107,107,.14);color:var(--red);border:1px solid rgba(255,107,107,.35)}
-  .l-green{background:rgba(95,211,141,.14);color:var(--green);border:1px solid rgba(95,211,141,.35)}
-  .arrow{color:var(--mute);margin:0 6px}
-  .labels{margin-top:10px;display:flex;align-items:center}
+  .wrap{position:relative;width:1280px;height:640px;box-sizing:border-box;padding:44px 64px 40px;display:flex;flex-direction:column;
+    background-image:radial-gradient(var(--rule) 1px, transparent 1px);background-size:18px 18px;background-position:-4px -4px}
+  .wrap::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 520px at 22% 45%, var(--paper) 55%, rgba(244,239,228,.55) 100%)}
+  .layer{position:relative;z-index:1;display:flex;flex-direction:column;height:100%}
+
+  .top{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:12px}
+  .top .name{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:19px;letter-spacing:-.01em}
+  .top .kind{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+  .hero{margin-top:26px;display:grid;grid-template-columns:1fr 300px;column-gap:40px;align-items:start}
+
+  .num{font-family:"Archivo Black",Impact,sans-serif;font-size:158px;line-height:.86;letter-spacing:-.045em;white-space:nowrap}
+  .num .z{color:var(--red)}
+  .note{margin-top:16px;display:flex;align-items:flex-start;gap:12px}
+  .note svg{flex:none;margin-top:2px}
+  .note p{margin:0;font-size:25px;line-height:1.34;max-width:600px}
+  .note b{font-weight:700}
+  .note span{color:var(--mute)}
+
+  .stamp{justify-self:end;margin-top:8px;transform:rotate(-9deg);border:5px solid var(--red);color:var(--red);border-radius:10px;padding:14px 22px 16px;text-align:center;opacity:.9}
+  .stamp .w{font-family:"Archivo Black",Impact,sans-serif;font-size:47px;line-height:1;letter-spacing:.02em}
+  .stamp .s{margin-top:7px;font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border-top:2px solid var(--red);padding-top:6px}
+
+  .chain{margin-top:auto;margin-bottom:34px;display:flex;align-items:center;gap:16px}
+  .chip{border:2.5px solid var(--ink);border-radius:12px;padding:11px 17px;display:flex;align-items:center;gap:11px;background:var(--paper);box-shadow:4px 4px 0 rgba(20,18,15,.10)}
+  .chip .dot{width:11px;height:11px;border-radius:50%;background:var(--red)}
+  .chip .t{font-family:"JetBrains Mono",monospace;font-size:16.5px;font-weight:700}
+  .arrow{font-size:22px;color:var(--mute)}
+  .chain .tail{margin-left:8px;font-size:16px;line-height:1.35;color:var(--mute);max-width:270px}
+  .chain .tail b{color:var(--ink);font-weight:600}
+
+  .foot{border-top:2px solid var(--ink);display:flex;align-items:stretch}
+  .foot .why{flex:1;padding:22px 28px 26px 0;font-size:19.5px;line-height:1.45;color:#2a2621;max-width:660px}
+  .foot .why em{font-style:normal;box-shadow:inset 0 -.3em 0 rgba(216,50,27,.20)}
+  .cmd{align-self:center;background:var(--ink);color:var(--paper);border-radius:10px;padding:15px 20px;font-family:"JetBrains Mono",monospace;font-size:17px;white-space:nowrap;box-shadow:6px 6px 0 rgba(20,18,15,.14)}
+  .cmd i{font-style:normal;color:#7fdc9e;margin-right:10px}
 </style></head><body>
-<div class="wrap">
-  <div class="grid"></div>
-  <div class="left">
+<div class="wrap"><div class="layer">
+
+  <div class="top">
+    <div class="name">openai-ads-api</div>
+    <div class="kind">agent skill &middot; openai ads advertiser api</div>
+  </div>
+
+  <div class="hero">
     <div>
-      <div class="eyebrow">OpenAI Ads <span class="sep"></span> advertiser api · agent skill</div>
-      <h1><small>openai-ads-api</small>Let an agent run your ads. Not your budget.</h1>
-      <p class="sub">Campaigns, ad groups, ads, creatives and insights through the OpenAI Ads Advertiser API &mdash; every write verified against the ad account, and paused unless you said otherwise.</p>
-      <div class="cmd mono"><span class="p">$</span> npx skills add wbso-ai/openai-ads-api-skill</div>
+      <div class="num">50<span class="z">000000</span></div>
+      <div class="note">
+        <svg width="30" height="34" viewBox="0 0 30 34" fill="none"><path d="M8 32 C8 18, 12 9, 25 5" stroke="#d8321b" stroke-width="3" stroke-linecap="round"/><path d="M17 3 L27 4.4 L22 13" stroke="#d8321b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p><b>micros.</b> <span>Which is fifty euros. Get one zero wrong and you have a five hundred euro day.</span></p>
+      </div>
     </div>
-    <div class="stats">
-      <div class="stat"><b>8</b><span>workflow steps</span></div>
-      <div class="stat"><b>6</b><span>mutation-safety rules</span></div>
-      <div class="stat"><b>3</b><span>object levels</span></div>
-      <div class="stat"><b>0</b><span>keys in output</span></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="bar"><i></i><i></i><i></i><span class="mono">campaign.json · pre-flight</span></div>
-    <div class="body mono">
-      <div class="row bad"><span class="k">&#10007;</span><span>"status": "active"</span></div>
-      <div class="row good"><span class="k">&#10003;</span><span>"status": "paused"</span></div>
-      <div class="sep"></div>
-      <div class="row bad"><span class="k">&#10007;</span><span>"budget": 50</span></div>
-      <div class="row good"><span class="k">&#10003;</span><span>50_000_000 micros &euro;50,00</span></div>
-      <div class="sep"></div>
-      <div class="row bad"><span class="k">&#10007;</span><span>PATCH /campaigns/{id}</span></div>
-      <div class="row good"><span class="k">&#10003;</span><span>POST /campaigns/{id}</span></div>
-      <div class="sep"></div>
-      <div class="row bad"><span class="k">&#10007;</span><span>-H "Bearer sk-ads-&hellip;"</span></div>
-      <div class="row good"><span class="k">&#10003;</span><span>$OPENAI_ADS_API_KEY &middot; 600</span></div>
-      <div class="labels"><span class="lbl l-red">unverified account</span><span class="arrow">&rarr;</span><span class="lbl l-green">GET /ad_account</span></div>
+    <div class="stamp">
+      <div class="w">PAUSED</div>
+      <div class="s">until you say otherwise</div>
     </div>
   </div>
-</div>
+
+  <div class="chain">
+    <div class="chip"><span class="dot"></span><span class="t">campaign</span></div>
+    <span class="arrow">&rarr;</span>
+    <div class="chip"><span class="dot"></span><span class="t">ad_group</span></div>
+    <span class="arrow">&rarr;</span>
+    <div class="chip"><span class="dot"></span><span class="t">ad</span></div>
+    <div class="tail">Built in dependency order, every ID reported back, <b>nothing live</b> until you ask.</div>
+  </div>
+
+  <div class="foot">
+    <div class="why">Everything the Advertiser API does &mdash; campaigns, creative uploads, previews, insights &mdash; run by an agent that <em>reads the ad account before it writes to it</em>.</div>
+    <div class="cmd"><i>$</i>npx skills add wbso-ai/openai-ads-api-skill</div>
+  </div>
+
+</div></div>
 </body></html>

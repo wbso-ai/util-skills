@@ -1,6 +1,6 @@
 # openai-ads-api skill
 
-![Let an agent run your ads, not your budget](assets/social.png)
+![50000000 micros, which is fifty euros: an agent skill that leaves every campaign paused until you say otherwise](assets/social.png)
 
 An Agent Skill for the OpenAI Ads Advertiser API: ad accounts, creative uploads, campaigns,
 ad groups, ads, conversion settings, previews, and insights. Uses the open `SKILL.md` format,
